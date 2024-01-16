@@ -1,0 +1,43 @@
+.tabela{
+    display: flex;
+    justify-content: center;
+}
+
+.tabelaItens{
+    border: 1px solid #CDCDCD;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 10px;
+    font-size: 16px;
+    font-weight:unset;
+}
+.tabelaItens th{
+    background-color:#a8a8a894; 
+    border: 0.5px solid #000000;
+    border-collapse: collapse; 
+    color: rgb(0, 0, 0); 
+    text-align: center;
+    width: 4.5rem;
+    height: 2rem;
+}
+.tabelaItens tr, .tabelaItens td{
+    border: 1px solid #CDCDCD;
+    border-collapse: collapse;
+    text-align: center;
+    height: 2rem;
+}
+.BtnRemover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: red;
+    height: 100%;
+}
+#error-message{
+    color: red;
+    display: none;
+    font-size: 20px;
+    margin-top: 0.5rem;
+    
+}

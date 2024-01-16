@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almoxarifado</title>
+    <link rel="stylesheet" href="assets/css/requisicao.css">
+    <link rel="stylesheet" href="assets/css/inputRequisicao.css">
+    <link rel="stylesheet" href="assets/css/tabela.css">
+</head>
+<body>
+
+    
+
+    <div class="menu"></div>
+
+    <div class="main">
+        <div class="header">
+            <span>Novo Pedido de Requisição</span>
+        </div>
+        <div class="conteudo">
+            
+            <div class="dadosPrincipais">
+                <div class="titulo">
+                    <span>Dados Principais | Requisição Nº </span>
+                    <input type="number" campo-obg="true" id="inpNumero">
+                </div>
+                <div class="camposPrincipais">
+                    <div class="camposPrincipaisLinha1 linhasCampos">
+                        <div class="grupo1 grupoInput">
+                            <span>ID.</span>
+                            <input type="text" data-mask="000" campo-obg="true" id="idDepartamento" campo-num="true">
+                        </div>
+                        <div class="grupo2 grupoInput">
+                            <span>Departamento</span>
+                            <input type="text" campo-obg="true" id="departamento">
+                        </div>
+                        <div class="grupo3 grupoInput">
+                            <span>Data</span>
+                            <input type="date" campo-obg="true" id="dataRequisicao">
+                        </div>
+                    </div>
+                    <div class="camposPrincipaisLinha2 linhasCampos">
+                        <div class="grupo4 grupoInput">
+                            <span>ID Func.</span>
+                            <input type="text" data-mask="000" campo-obg="true" id="idFuncionario" campo-num="true">
+                        </div>
+                        <div class="grupo5 grupoInput">
+                            <span>Nome Funcionário</span>
+                            <input type="text" campo-obg="true" id="NomeFuncionario">
+                        </div>
+                        <div class="grupo6 grupoInput">
+                            <span>Cargo</span>
+                            <input type="text" campo-obg="true" id="cargo">
+                        </div>
+                    </div>
+                    <div class="camposPrincipaisLinha3 linhasCampos">
+                        <div class="grupo7 grupoInput">
+                            <span>Categoria Motivo</span>  
+                            <div class="grupoCategoria">                                                         
+                                <select id="categoriaMotivo" campo-obg="true"></select>
+                                <img class="btnAdd" src="assets/img/add.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="grupo8 grupoInput">
+                            <span>Motivo</span> 
+                            <div class="grupoMotivo"> 
+                                <select id="Motivo" campo-obg="true"></select>
+                                <img class="btnAdd" src="assets/img/add.svg" alt="">
+                            </div>                            
+                   
+                        </div>
+                        <div class="grupo9 grupoInput">
+                            <span>Nível de Prioridade</span>
+                            
+                            <div class="radioPrioridade" id="radioPrioridade">
+
+                                <div class="grupoPrioridade">
+                                    <input class="chkPrioridade" type="radio" name="prioridade" id="urgente" >
+                                    <span>Urgente</span>
+                                    
+                                </div>
+                                <div class="grupoPrioridade">
+                                    <input class="chkPrioridade" type="radio" name="prioridade" id="medio">
+                                    <span>Médio</span>
+                                   
+                                </div>
+                                <div class="grupoPrioridade">
+                                    <input class="chkPrioridade" type="radio" name="prioridade" id="baixo">
+                                    <span>Baixo</span>
+                                    
+                                </div>
+                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="itensRequisicao">
+                <div class="titulo">
+                    <span>Dados Principais | Requisição Nº </span>
+                    <p id="error-message">Quantidade inválida!</p>           
+                </div>
+                
+                <div class="camposItens">
+                    <div class="linhaAdicionarItens">
+                        <div id="legenda">
+                            <div>
+                                <img src="assets/img/verde.svg" alt="">
+                                <p>Estoque acima de 10% do mínimo</p>
+                                
+                            </div>
+                            <div>
+                                <img src="assets/img/yellow-square-svgrepo-com.svg" alt="">
+                                <p>Estoque abaixo de 10% do mínimo</p>
+                                
+                            </div>
+                            <div>
+                                <img src="assets/img/red-square-svgrepo-com.svg" alt="">
+                                <p>Estoque abaixo do minimo</p> 
+                            </div>
+                        </div>
+                        
+                            <div class="grupoProduto">
+                                <span>Cod. Produto</span>
+                                <input type="text" id="CodigoProtudo">
+                            </div>
+                            <div class="grupoProdutoDescricao">
+                                <span>Descrição</span>
+                                <input type="text" id="DescricaoProtudo">
+                            </div>
+                            <div class="grupoEstoque">
+                                <span>Estoque</span>
+                                <input type="text" disabled id="Estoque">
+                                
+                            </div>
+                            
+                        
+                                
+                            
+                            <div class="grupoStatusEstoque">
+                                <span>Quantidade</span>
+                                
+                                <div class="imgGrupoEstoque">
+                                    
+                                <input type="text" id="Quantidade">
+                                
+                                    <img id="legenda-img" src="assets/img/verde.svg" alt="">
+                                    
+                                </div>
+                                  
+                            </div>
+                     
+                    </div>
+                    
+                    <div class="grupoBtnInserirItens">
+                        <div class="BtnInserirItens" id="btnInserirItens">  
+                            <span>Adicionar</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tabela" id="tabela">
+                        <table class="tabelaItens" id="tabelaItens">
+                            <tr>
+                                <th>Código</th>
+                                <th>Produto</th>
+                                <th>Qtd</th>
+                                <th>Un.</th>
+                                <th>Preço</th>
+                                <th>Total</th>
+                                <th>Remover</th>
+                            </tr>
+                        </table>
+                    </div>
+
+                <div class="linhaTotal" id="linhaTotal">
+                    <span>Total: R$</span>
+                    <input type="text" disabled readonly id="total">
+                </div>
+
+                <div class="BtnGravarItens">
+                    <button type="submit" id="btnGravar"> Gravar </button>
+                </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+<script src="assets/scripts/dados.js"></script>
+<script src="assets/scripts/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

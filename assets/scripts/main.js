@@ -14,7 +14,7 @@ inputDepartamento.style.backgroundColor = "white"
 */
 
 function adicionarCorInput() {
-    const listInput = document.querySelectorAll("input[type='text']");
+    const listInput = document.querySelectorAll(".cor");
     const listSelect = document.querySelectorAll("select");
 
 
@@ -27,6 +27,8 @@ function adicionarCorInput() {
 
     }
 */
+
+console.log(listInput)
     
 listInput.forEach(function(index){
     
@@ -74,8 +76,10 @@ function carregarCategorias() {
 }
 
 function carregarMotivos(){
+    
     const selectMotivo = document.getElementById('Motivo')
     selectMotivo.innerHTML="";
+    
     const optFirst = document.createElement('option')
     optFirst.value = -1
     optFirst.text = ""
@@ -83,6 +87,13 @@ function carregarMotivos(){
 
     const valorCategoria =  document.getElementById('categoriaMotivo').value
     const motivosFiltrados = motivos.filter((m) => m.idCategoria == valorCategoria)
+
+    if(valorCategoria !=-1){
+        selectMotivo.disabled = false
+    }else{
+        selectMotivo.disabled = true
+        selectMotivo.style.backgroundColor = "rgba(187, 187, 187, 0.3)"
+    }
 
 
     motivosFiltrados.forEach(function(motivo){
@@ -106,7 +117,12 @@ document.getElementById('CodigoProtudo').addEventListener("keyup",function(){
 
     if(ProdutosFiltrados.length>0){
         document.getElementById('DescricaoProtudo').value = ProdutosFiltrados[0].Descricao
-        document.getElementById('Estoque').value = ProdutosFiltrados[0].EstoqueMinimo
+        document.getElementById('Estoque').value = ProdutosFiltrados[0].Quantidade
+        document.getElementById("Quantidade").disabled = false
+        if (document.getElementById('Estoque').value ) {
+            document.getElementById('legenda-img').src = 'assets/img/red-square-svgrepo-com.svg'
+        }
+       
     }else{
         document.getElementById('DescricaoProtudo').value = ""
         document.getElementById('Estoque').value = ""
@@ -114,9 +130,22 @@ document.getElementById('CodigoProtudo').addEventListener("keyup",function(){
     
 })
 
+document.getElementById("Quantidade").addEventListener("keyup",function(){
+
+    if (document.getElementById("Quantidade").value != 0) {
+        document.querySelector(".grupoBtnInserirItens").style.display = "flex"
+    }else{
+        document.querySelector(".grupoBtnInserirItens").style.display = "none"
+    }
+})
+
 document.getElementById('idDepartamento').addEventListener("keyup",function(){
     const valorDep =  document.getElementById('idDepartamento').value;
     const DepFiltrados = departamentos.filter((d) => d.idDep == valorDep);
+
+    if(valorDep != ''){
+
+    }
 
     if(DepFiltrados.length>0){
         document.getElementById('departamento').value = DepFiltrados[0].Descricao
@@ -201,7 +230,6 @@ checkboxesPrioridade.forEach(function(checkbox) {
 
 }
 
-
 const totalRequisicao = document.getElementById('total')
 const totalValor = 0
 totalRequisicao.value = totalValor.toFixed(2)
@@ -211,6 +239,7 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
 
     const campoProduto = document.getElementById('CodigoProtudo');
     const campoDescricaoProduto = document.getElementById('DescricaoProtudo')
+    const campoEstoque = document.getElementById('Estoque')
     const campoQuantidade = document.getElementById('Quantidade')
 
     const linha = document.createElement('tr')
@@ -226,14 +255,19 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
     tdBtnRemover.setAttribute('class','BtnRemover')
     tdBtnRemover.innerHTML="X"
 
+    const produtoPesquisado = produtos.filter((p)=>p.idProduto==campoProduto.value)
+    
     tdBtnRemover.addEventListener('click',function(){
             tabelaItens.removeChild(linha);
             let totalValor = parseFloat(totalRequisicao.value) - parseFloat(valorLinha)
             totalRequisicao.value = totalValor.toFixed(2)
-            
-    })
+            produtoPesquisado[0].Quantidade += parseInt(linha.childNodes[2].textContent)
+            campoProduto.value = ''
+            campoDescricaoProduto.value = ''
+            campoEstoque.value = ''
+            campoQuantidade.value = ''
 
-    const produtoPesquisado = produtos.filter((p)=>p.idProduto==campoProduto.value)
+    })
 
     function verErro(){
         if(campoQuantidade.value > produtoPesquisado[0].EstoqueMinimo || campoQuantidade.value==0){
@@ -246,12 +280,14 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
             document.getElementById('error-message').style.display = "none"
             document.getElementById('Quantidade').style.borderColor = ''
             document.getElementById('Quantidade').style.borderWidth = '1px'
+
             tdCodigo.innerHTML = campoProduto.value
             tdDescricao.innerHTML = campoDescricaoProduto.value
             tdUnidade.innerHTML = produtoPesquisado[0].Unidade
             tdPreco.innerHTML = produtoPesquisado[0].preco
             tdTotalLinha.innerHTML = campoQuantidade.value*produtoPesquisado[0].preco;
             tdQuantidade.innerHTML = campoQuantidade.value
+
             linha.appendChild(tdCodigo)
             linha.appendChild(tdDescricao)
             linha.appendChild(tdQuantidade)
@@ -260,10 +296,29 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
             linha.appendChild(tdTotalLinha)
             tabelaItens.appendChild(linha)
             
+            produtoPesquisado[0].Quantidade -= campoQuantidade.value
+            
+            console.log(produtoPesquisado[0])
+
+            let porcentagem = produtoPesquisado[0].EstoqueMinimo * 0.1
+    
+             if(produtoPesquisado[0].Quantidade > (produtoPesquisado[0].EstoqueMinimo - porcentagem)){
+                 console.log("10% acima");
+             }else if(produtoPesquisado[0].Quantidade < (produtoPesquisado[0].EstoqueMinimo - porcentagem)){
+                 console.log("10% abaixo");
+             }else if(produtoPesquisado[0].Quantidade > produtoPesquisado[0].EstoqueMinimo){
+                 console.log("Bem abaixo");
+             }
+    
         }
+
+        campoProduto.value = ''
+        campoDescricaoProduto.value = ''
+        campoEstoque.value = ''
+        campoQuantidade.value = ''
+
     }
     
-
     
 
     verErro();
@@ -273,7 +328,7 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
     const colunas = linha.getElementsByTagName('td')
     let valorLinha = colunas[5].innerText;
     
-    let totalValor = parseFloat(totalRequisicao.value) + parseFloat(campoQuantidade.value*produtoPesquisado[0].preco)
+    let totalValor = parseFloat(totalRequisicao.value) + parseFloat(valorLinha)
     
     totalRequisicao.value = totalValor.toFixed(2)    
    
@@ -292,6 +347,9 @@ document.getElementById("legenda-img").addEventListener('mouseout',function(){
     document.getElementById('legenda').style.opacity = "0"
         
 })
+
+
+
 
     
 

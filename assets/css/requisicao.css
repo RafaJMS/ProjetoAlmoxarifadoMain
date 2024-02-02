@@ -101,6 +101,12 @@
 
 }
 
+ #NomeFuncionario:disabled, #departamento:disabled, #cargo:disabled{
+    background-color: rgb(216, 216, 216);
+}
+#Motivo:disabled{
+    background-color: rgb(194, 194, 194);
+}
 /* ITENS */
 .camposItens{
     display: flex;
@@ -154,7 +160,7 @@
 }
 
 .grupoBtnInserirItens{
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;  
 }

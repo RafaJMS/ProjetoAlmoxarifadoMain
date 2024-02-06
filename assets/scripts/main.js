@@ -270,7 +270,7 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
     })
 
     function verErro(){
-        if(campoQuantidade.value > produtoPesquisado[0].EstoqueMinimo || campoQuantidade.value==0){
+        if(campoQuantidade.value > produtoPesquisado[0].Quantidade || campoQuantidade.value==0){
             document.getElementById('error-message').style.display = "block"
             document.getElementById('Quantidade').style.borderColor = 'red'
             document.getElementById('Quantidade').style.borderWidth = '2px'

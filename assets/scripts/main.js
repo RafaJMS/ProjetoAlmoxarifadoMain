@@ -235,6 +235,9 @@ const totalValor = 0
 totalRequisicao.value = totalValor.toFixed(2)
 
 document.getElementById('btnInserirItens').addEventListener('click',function(){
+
+    
+
     const tabelaItens = document.getElementById('tabelaItens')
 
     const campoProduto = document.getElementById('CodigoProtudo');
@@ -265,7 +268,7 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
             campoProduto.value = ''
             campoDescricaoProduto.value = ''
             campoEstoque.value = ''
-            campoQuantidade.value = ''
+            campoQuantidade.disabled = ''
 
     })
 
@@ -316,6 +319,7 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
         campoDescricaoProduto.value = ''
         campoEstoque.value = ''
         campoQuantidade.value = ''
+        campoQuantidade.disabled = true
 
     }
     

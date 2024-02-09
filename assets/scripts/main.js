@@ -134,11 +134,8 @@ document.getElementById("Quantidade").addEventListener("keyup",function(){
 
     if (document.getElementById("Quantidade").value != 0) {
         document.querySelector(".grupoBtnInserirItens").style.display = "flex"
-    }else{
-        console.log(document.getElementById("Quantidade").value)
-        document.querySelector(".grupoBtnInserirItens").style.display = "none"
-    }
-})
+    
+}})
 
 document.getElementById('idDepartamento').addEventListener("keyup",function(){
     const valorDep =  document.getElementById('idDepartamento').value;

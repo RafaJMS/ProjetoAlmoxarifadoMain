@@ -14,7 +14,7 @@ inputDepartamento.style.backgroundColor = "white"
 */
 
 function adicionarCorInput() {
-    const listInput = document.querySelectorAll(".cor");
+    const listInput = document.querySelectorAll("input[type=text]");
     const listSelect = document.querySelectorAll("select");
 
 

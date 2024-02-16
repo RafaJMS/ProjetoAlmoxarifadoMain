@@ -99,9 +99,10 @@ function carregarMotivos(){
 
     if(valorCategoria !=-1){
         selectMotivo.disabled = false
+        selectMotivo.style.backgroundColor = "white"
     }else{
         selectMotivo.disabled = true
-        selectMotivo.style.backgroundColor = "rgba(187, 187, 187, 0.3)"
+        selectMotivo.style.backgroundColor = "#E0E0E0"
     }
 
 
@@ -186,9 +187,8 @@ document.getElementById('btnGravar').addEventListener("click",function(){
 
     elementosObrigatorios.forEach(function(item){
         if(item.value==""||item.value==-1){
-        item.style.borderColor = 'red'
         item.style.borderWidth = '2px'
-        item.style.backgroundColor = '#E0E0E0'
+        item.style.backgroundColor = 'red'
         
     }else{
         item.style.borderColor = ''
@@ -342,7 +342,6 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
     document.getElementById('legenda-img').src = 'assets/img/verde.svg'
 })
 
-
 document.getElementById("legenda-img").addEventListener('mouseover',function(){
     document.getElementById('legenda').style.opacity = "1"
         
@@ -355,6 +354,6 @@ document.getElementById("legenda-img").addEventListener('mouseout',function(){
 eventoClickPrioridadeHabilitarCor()
 adicionarCorInput();
 carregarCategorias();
-
+carregarMotivos();
 
 

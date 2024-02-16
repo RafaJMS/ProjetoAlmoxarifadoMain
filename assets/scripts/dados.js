@@ -34,33 +34,40 @@ const produtos = [
     {
         "idProduto":1,
         "Descricao":'Teclado',
-        "Quantidade":20,
-        "EstoqueMinimo":12,
-        "preco": 10.00,
+        "Quantidade":80,
+        "EstoqueMinimo":30,
+        "preco": 120.00,
         "Unidade":"Unid"
     },
     {
         "idProduto":2,
         "Descricao":'Mouse',
-        "Quantidade":20,
-        "EstoqueMinimo":12,
-        "preco": 10.00,
+        "Quantidade":100,
+        "EstoqueMinimo":50,
+        "preco": 30.00,
         "Unidade":"Unid"
     },
     {
         "idProduto":3,
         "Descricao":'Monitor',
-        "Quantidade":10,
-        "EstoqueMinimo":6,
-        "preco": 10.00,
+        "Quantidade":50,
+        "EstoqueMinimo":20,
+        "preco": 250.00,
         "Unidade":"Unid"
     },
     {
         "idProduto":4,
         "Descricao":'Gabinete',
-        "Quantidade":10,
-        "EstoqueMinimo":6,
-        "preco": 10.00,
+        "Quantidade":50,
+        "EstoqueMinimo":20,
+        "preco": 200.00,
+        "Unidade":"Unid"
+    },{
+        "idProduto":5,
+        "Descricao":'GPU',
+        "Quantidade":100,
+        "EstoqueMinimo":10,
+        "preco": 500.00,
         "Unidade":"Unid"
     },
 ];
@@ -97,7 +104,7 @@ const funcionarios = [
     {
         "idFunc": 3,
         "Nome":'Maria',
-        "Cargo": 'chefe é chefe ne pai'
+        "Cargo": 'Chefe do Setor'
         
     }
 ]

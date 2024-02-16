@@ -119,7 +119,17 @@ document.getElementById('CodigoProtudo').addEventListener("keyup",function(){
         document.getElementById('DescricaoProtudo').value = ProdutosFiltrados[0].Descricao
         document.getElementById('Estoque').value = ProdutosFiltrados[0].Quantidade
         document.getElementById("Quantidade").disabled = false
-        if (document.getElementById('Estoque').value ) {
+        document.getElementById("Quantidade").style.backgroundColor = "white"
+
+        let porcentagem = ProdutosFiltrados[0].EstoqueMinimo * 1.1
+
+        if (document.getElementById('Estoque').value > porcentagem) {
+            document.getElementById('legenda-img').src = 'assets/img/verde.svg'}
+        else if (document.getElementById('Estoque').value >= ProdutosFiltrados[0].EstoqueMinimo 
+        && document.getElementById('Estoque').value < porcentagem){
+            document.getElementById('legenda-img').src = 'assets/img/yellow-square-svgrepo-com.svg'
+        }
+        else if (document.getElementById('Estoque').value < ProdutosFiltrados[0].EstoqueMinimo) {
             document.getElementById('legenda-img').src = 'assets/img/red-square-svgrepo-com.svg'
         }
        
@@ -265,7 +275,7 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
             campoProduto.value = ''
             campoDescricaoProduto.value = ''
             campoEstoque.value = ''
-            campoQuantidade.disabled = ''
+            campoQuantidade.disabled = 'true'
 
     })
 
@@ -297,18 +307,7 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
             tabelaItens.appendChild(linha)
             
             produtoPesquisado[0].Quantidade -= campoQuantidade.value
-            
-            console.log(produtoPesquisado[0])
 
-            let porcentagem = produtoPesquisado[0].EstoqueMinimo * 0.1
-    
-             if(produtoPesquisado[0].Quantidade > (produtoPesquisado[0].EstoqueMinimo - porcentagem)){
-                 console.log("10% acima");
-             }else if(produtoPesquisado[0].Quantidade < (produtoPesquisado[0].EstoqueMinimo - porcentagem)){
-                 console.log("10% abaixo");
-             }else if(produtoPesquisado[0].Quantidade > produtoPesquisado[0].EstoqueMinimo){
-                 console.log("Bem abaixo");
-             }
     
         }
 
@@ -317,14 +316,11 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
         campoEstoque.value = ''
         campoQuantidade.value = ''
         campoQuantidade.disabled = true
+        campoQuantidade.style.backgroundColor = "rgb(216, 216, 216)"
 
     }
-    
-    
 
     verErro();
-
-    
 
     const colunas = linha.getElementsByTagName('td')
     let valorLinha = colunas[5].innerText;

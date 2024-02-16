@@ -66,7 +66,7 @@ const produtos = [
         "idProduto":5,
         "Descricao":'GPU',
         "Quantidade":50,
-        "EstoqueMinimo":20,
+        "EstoqueMinimo":30,
         "preco": 500.00,
         "Unidade":"Unid"
     },

@@ -35,7 +35,7 @@ const produtos = [
         "idProduto":1,
         "Descricao":'Teclado',
         "Quantidade":80,
-        "EstoqueMinimo":30,
+        "EstoqueMinimo":32,
         "preco": 120.00,
         "Unidade":"Unid"
     },
@@ -50,23 +50,23 @@ const produtos = [
     {
         "idProduto":3,
         "Descricao":'Monitor',
-        "Quantidade":50,
-        "EstoqueMinimo":20,
-        "preco": 250.00,
+        "Quantidade":60,
+        "EstoqueMinimo":24,
+        "preco": 350.00,
         "Unidade":"Unid"
     },
     {
         "idProduto":4,
         "Descricao":'Gabinete',
-        "Quantidade":50,
-        "EstoqueMinimo":20,
-        "preco": 200.00,
+        "Quantidade":70,
+        "EstoqueMinimo":28,
+        "preco": 230.00,
         "Unidade":"Unid"
     },{
         "idProduto":5,
         "Descricao":'GPU',
-        "Quantidade":100,
-        "EstoqueMinimo":10,
+        "Quantidade":50,
+        "EstoqueMinimo":20,
         "preco": 500.00,
         "Unidade":"Unid"
     },

@@ -12,13 +12,6 @@ inputDepartamento.style.backgroundColor = "white"
 
 });
 */
-
-function adicionarCorInput() {
-    const listInput = document.querySelectorAll("input[type=text]");
-    const listSelect = document.querySelectorAll("select");
-
-
-   
 //listInputText[1].style.backgroundColor = "lightgreen"
 
 /*
@@ -28,7 +21,23 @@ function adicionarCorInput() {
     }
 */
 
-console.log(listInput)
+// document.querySelectorAll('[campo-obg="true"]').forEach(function(item) {
+//     item.addEventListener("mouseover", function() {
+//         item.style.borderColor = '';
+//         item.style.borderWidth = '1px';
+//         if(item.disabled==false){
+//             item.style.backgroundColor = 'white';
+//         }else{
+//             item.style.backgroundColor = 'rgba(187, 187, 187, 0.3)';
+//         }
+        
+//     });
+// });
+
+
+function adicionarCorInput() {
+    const listInput = document.querySelectorAll("input[type=text]");
+    const listSelect = document.querySelectorAll("select");
     
 listInput.forEach(function(index){
     
@@ -105,8 +114,6 @@ function carregarMotivos(){
     });
 }
 
-
-
 document.getElementById('categoriaMotivo').addEventListener('change',function(){
     carregarMotivos();
 })
@@ -124,7 +131,8 @@ document.getElementById('CodigoProtudo').addEventListener("keyup",function(){
         let porcentagem = ProdutosFiltrados[0].EstoqueMinimo * 1.1
 
         if (document.getElementById('Estoque').value > porcentagem) {
-            document.getElementById('legenda-img').src = 'assets/img/verde.svg'}
+            document.getElementById('legenda-img').src = 'assets/img/verde.svg'
+        }
         else if (document.getElementById('Estoque').value >= ProdutosFiltrados[0].EstoqueMinimo 
         && document.getElementById('Estoque').value < porcentagem){
             document.getElementById('legenda-img').src = 'assets/img/yellow-square-svgrepo-com.svg'
@@ -151,10 +159,6 @@ document.getElementById('idDepartamento').addEventListener("keyup",function(){
     const valorDep =  document.getElementById('idDepartamento').value;
     const DepFiltrados = departamentos.filter((d) => d.idDep == valorDep);
 
-    if(valorDep != ''){
-
-    }
-
     if(DepFiltrados.length>0){
         document.getElementById('departamento').value = DepFiltrados[0].Descricao
     }else{
@@ -179,7 +183,6 @@ document.getElementById('idFuncionario').addEventListener("keyup",function(){
 
 document.getElementById('btnGravar').addEventListener("click",function(){
     const elementosObrigatorios =  document.querySelectorAll('[campo-obg="true"]');
-    console.log(elementosObrigatorios)
 
     elementosObrigatorios.forEach(function(item){
         if(item.value==""||item.value==-1){
@@ -187,8 +190,14 @@ document.getElementById('btnGravar').addEventListener("click",function(){
         item.style.borderWidth = '2px'
         item.style.backgroundColor = '#E0E0E0'
         
-    }
-    });
+    }else{
+        item.style.borderColor = ''
+        if(item.disabled==false){
+            item.style.backgroundColor = 'white';
+        }else{
+            item.style.backgroundColor = 'rgba(187, 187, 187, 0.3)';
+        }
+    }});
     
 const chkUrgente = document.getElementById('urgente').checked
 const chkMedio = document.getElementById('medio').checked
@@ -212,12 +221,9 @@ if (chkUrgente==false && chkMedio==false && chkBaixo==false){
 
 
 
-
 function eventoClickPrioridadeHabilitarCor(){
 
-const checkboxesPrioridade = document.querySelectorAll('.chkPrioridade');    
-
-console.log(checkboxesPrioridade);
+const checkboxesPrioridade = document.querySelectorAll('.chkPrioridade');   
 
 checkboxesPrioridade.forEach(function(checkbox) {
     checkbox.addEventListener('click', function() {    
@@ -275,8 +281,10 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
             campoProduto.value = ''
             campoDescricaoProduto.value = ''
             campoEstoque.value = ''
-            campoQuantidade.disabled = 'true'
-
+            campoQuantidade.value = ''
+            campoQuantidade.disabled = true
+            document.querySelector(".grupoBtnInserirItens").style.display = "none"
+            document.getElementById('legenda-img').src = 'assets/img/verde.svg'
     })
 
     function verErro(){
@@ -331,8 +339,7 @@ document.getElementById('btnInserirItens').addEventListener('click',function(){
    
     linha.appendChild(tdBtnRemover)
     tabelaItens.appendChild(linha)
-    console.log(linha)
-
+    document.getElementById('legenda-img').src = 'assets/img/verde.svg'
 })
 
 
@@ -344,12 +351,6 @@ document.getElementById("legenda-img").addEventListener('mouseout',function(){
     document.getElementById('legenda').style.opacity = "0"
         
 })
-
-
-
-
-    
-
 
 eventoClickPrioridadeHabilitarCor()
 adicionarCorInput();

@@ -102,7 +102,7 @@ function carregarMotivos(){
         selectMotivo.style.backgroundColor = "white"
     }else{
         selectMotivo.disabled = true
-        selectMotivo.style.backgroundColor = "#E0E0E0"
+        selectMotivo.style.backgroundColor = "#cecece"
     }
 
 
@@ -131,7 +131,7 @@ document.getElementById('CodigoProtudo').addEventListener("keyup",function(){
 
         let porcentagem = ProdutosFiltrados[0].EstoqueMinimo * 1.1
 
-        if (document.getElementById('Estoque').value > porcentagem) {
+        if (document.getElementById('Estoque').value >= porcentagem) {
             document.getElementById('legenda-img').src = 'assets/img/verde.svg'
         }
         else if (document.getElementById('Estoque').value >= ProdutosFiltrados[0].EstoqueMinimo 
@@ -195,7 +195,7 @@ document.getElementById('btnGravar').addEventListener("click",function(){
         if(item.disabled==false){
             item.style.backgroundColor = 'white';
         }else{
-            item.style.backgroundColor = 'rgba(187, 187, 187, 0.3)';
+            item.style.backgroundColor = '#E0E0E0';
         }
     }});
     

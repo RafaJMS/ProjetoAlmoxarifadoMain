@@ -102,7 +102,7 @@
 }
 
  #NomeFuncionario:disabled, #departamento:disabled, #cargo:disabled, #Motivo:disabled{
-    background-color: rgba(216, 216, 216, 0.486);
+    background-color: #cecece;
     color: rgba(0, 0, 0, 0.849);
     opacity: 1;
 }
